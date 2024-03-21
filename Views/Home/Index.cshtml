@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Aditi Calculator</h1>
+
+</div>
+<div id="calculator">
+        <input type="text" id="number1" placeholder=" Insert First number">
+        <select id="operator">
+            <option value="Addingnumber">+</option>
+            <option value="Subtractingnumber">-</option>
+            <option value="multplying">*</option>
+            <option value="Divide">/</option>
+        </select>
+        <input type="text" id="number2" placeholder=" Insert Second number">
+        <button onclick="calculate()">Calculate</button>
+        <p id="Finaloutputresult"></p>
+    </div>
+</div>
+
+<script>
+    function calculate() {
+        var yourfirstnumber = parseFloat(document.getElementById("number1").value);
+        var yoursecondnumber = parseFloat(document.getElementById("number2").value);
+        var operator = document.getElementById("operator").value;
+        var Finaloutputresult;
+
+        switch (operator) {
+            case "Addingnumber":
+                Finaloutputresult = yourfirstnumber + yoursecondnumber;
+                break;
+            case "Subtractingnumber":
+                Finaloutputresult = yourfirstnumber - yoursecondnumber;
+                break;
+            case "multplying":
+                Finaloutputresult = yourfirstnumber * yoursecondnumber;
+                break;
+            case "Divide":
+                if (yoursecondnumber === 0) {
+                    alert("Error: Your Denominator is zero so the  result is zero. ");
+                    return;
+                }
+                Finaloutputresult = yourfirstnumber / yoursecondnumber;
+                break;
+            default:
+                alert("Invalid operator");
+                return;
+        }
+
+        document.getElementById("Finaloutputresult").textContent = "Total: " + Finaloutputresult;
+    }
+</script>
